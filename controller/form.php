@@ -1,9 +1,9 @@
 
-<?php 
+<?php
 	include('validator.php');
 
 	class form {
-		
+
 		protected $validation;
 		public $fields = [];
 		public $validation_errors = [];
@@ -21,7 +21,7 @@
 			// this is important to create the Main Cases for validation without this validation won't work
 			$this->validation->createMainCases();
 		}
-		
+
 		// returns the fields of the form with the value
 		function get_fields() {
 			return $this->fields;
@@ -39,9 +39,9 @@
 				return $exist;
 			}
 		}
-		
+
 		function after_validate($payload){
-			foreach ($payload as $key => $value) { 
+			foreach ($payload as $key => $value) {
 				foreach ($value as $key2 => $value2) {
 					if($value2 == "Passed"){
 						unset($payload[$key][$key2]);
@@ -55,16 +55,16 @@
 		 validate form
 		 payload is how the form-input should be validated
 		 sample payload \/
-		
+
 			[
 				'firstname' => ['require','+max-20'],
 				'lastname'  => ['require','+max-20'],
 				'age'		=> ['require','legal']
 			]
-				" + " --> in the max is important, this is a way to tell the program that you are passing a validation 
-						  with a dynamic value 
+				" + " --> in the max is important, this is a way to tell the program that you are passing a validation
+						  with a dynamic value
 
-				" - " --> don't forget this, this is a way to tell the program that the next strings are the dynamic 
+				" - " --> don't forget this, this is a way to tell the program that the next strings are the dynamic
 				          value that you passed in the validation
 		*/
 		function validate($payload) {
@@ -72,22 +72,22 @@
 			# true = No error;
 			# false = Has error;
 			$Result = true;
-			/* 
-				iterate in the array 
+			/*
+				iterate in the array
 					key   = field
 					value = list on how to validate the field (also an array)
 			*/
-			foreach ($payload as $key => $value) { 
+			foreach ($payload as $key => $value) {
 				/*
-					iterate in the array 
-						key2   = index 
+					iterate in the array
+						key2   = index
 						value2 = how to validate field
-				*/ 
+				*/
 				foreach ($value as $key2 => $value2) {
 					// if it is max or min validation or anything that has a dynamic value in it
 					if(substr($value2, 0,1) == "+")
 					{
-						/* 	
+						/*
 							extract the validation from what and how much
 							example validation +max-20
 							returns ['max' => 20]
@@ -95,7 +95,7 @@
 						 	returns ['samewith' => pass]
 						*/
 						$output = $this->validation->dynamic_extract($value2);
-						
+
 						foreach ($output as $key3 => $value4) {
 							// key3 is the validation name like max/min/samewith
 							// $this->fields[$key] is the value of the field
@@ -104,12 +104,11 @@
 							// if value4 is a numeric value
 							if(is_numeric($value4)){
 								$payload[$key][$key2] = $this->validation->psuedoSwitch($key3, [$this->fields[$key],$value4]);
-								if($payload[$key][$key2] === "Passed"){
-									array_push($comments, true);
-								}
-								
+								// if($payload[$key][$key2] === "Passed"){
+								// 	$Result = true;
+								// }
+
 							}else if($this->is_field($value4)){
-								
 								$payload[$key][$key2] = $this->validation->psuedoSwitch($key3, [$this->fields[$key],$this->fields[$value4]]);
 							}
 						}
@@ -129,18 +128,19 @@
 		// end of validation
 
 		// Submit Form to database
-		function submit($table,$value){
+		function submit($table){
 			include('Database.php');
 
-			$Data = new Database([
-				'host' => 'localhost',
+			$db = new Database([
+				'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
 				'user' => 'root',
-				'pass' => '',
+				'pass' => 'merrysean',
 			]);
-
-			$result = $Data->Insert($table,$value);
+			array_pop($this->fields);
+			$result = $db->Insert($table,$this->fields);
 			if($result){
-				return "Submition Successfull";
+				print json_encode($result);
+				echo "<br><br><br>";
 			}else{
 				return "Submition Failed";
 			}

@@ -1,12 +1,12 @@
 
-<?php 
+<?php
 
     class validator {
 
         // this array is what is going to be validated
         public $cases = [];
 
-        // dynamic value extractor 
+        // dynamic value extractor
         function dynamic_extract($value){
             $part1 = substr(strstr($value, '-', true),1);
             $part2 = substr(strstr($value, '-'), 1);
@@ -66,7 +66,7 @@
                 }else{
                     return "No value";
                 }
-				
+
             });
             // measure string strenght usually used for password
             $this->addCase('strength',function($value){
@@ -78,54 +78,54 @@
                     $strength = 0;
                     /*** get the length of the value ***/
                     $length = strlen($value);
-                 
+
                     /*** check if value is not all lower case ***/
                     if(strtolower($value) != $value)
                     {
                         $strength += 1;
                     }
-                 
+
                     /*** check if value is not all upper case ***/
                     if(strtoupper($value) == $value)
                     {
                         $strength += 1;
                     }
-                 
+
                     /*** check string length is 8 -15 chars ***/
                     if($length >= 8 && $length <= 15)
                     {
                         $strength += 1;
                     }
-                 
+
                     /*** check if lenth is 16 - 35 chars ***/
                     if($length >= 16 && $length <=35)
                     {
                         $strength += 2;
                     }
-                 
+
                     /*** check if length greater than 35 chars ***/
                     if($length > 35)
                     {
                         $strength += 3;
                     }
-                 
+
                     /*** get the numbers in the password ***/
                     preg_match_all('/[0-9]/', $value, $numbers);
                     $strength += count($numbers[0]);
-                 
+
                     /*** check for special chars ***/
                     preg_match_all('/[|!@#$%&*\/=?,;.:\-_+~^\\\]/', $value, $specialchars);
                     $strength += sizeof($specialchars[0]);
-                 
+
                     /*** get the number of unique chars ***/
                     $chars = str_split($value);
                     $num_unique_chars = sizeof( array_unique($chars) );
                     $strength += $num_unique_chars * 2;
-                 
+
                     /*** strength is a number 1-10; ***/
                     $strength = $strength > 99 ? 99 : $strength;
                     $strength = floor($strength / 10 + 5);
-                 
+
                     if($strength > 5){
                         return "Passed";
                     }else{
@@ -134,8 +134,8 @@
                 }else{
                     return 'No value';
                 }
-                
-                
+
+
             });
             // check if input is on maximum charaters
             $this->addCase('max',function($value,$number){
@@ -150,7 +150,7 @@
                 }else{
                     return 'No value';
                 }
-                
+
             });
             // check if input is below minimun charaters
             $this->addCase('min',function($value,$number){
@@ -173,7 +173,7 @@
                     if ($value === $value2) {
                         return 'Passed';
                     }else {
-                        return 'Password Mismatch';
+                        return $Value2.' Mismatch';
                     }
                 }
                 else{
@@ -192,7 +192,7 @@
                     return 'No value';
                 }
 
-            }); 
+            });
         }
     }
 

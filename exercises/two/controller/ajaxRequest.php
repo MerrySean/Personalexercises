@@ -1,5 +1,5 @@
-<?php include('../../../controller/form.php');?>
-<?php 
+<?php include('./controller/form.php');?>
+<?php
 
     if(isset($_POST['btnSubmit']) && isset($_POST['gender']))
     {
@@ -29,11 +29,12 @@
                     'cpass'   => $_POST['validation']['cpass']
                 ]
             );
+        
         echo json_encode($form);
     }
 
 
-    
+
 
 
 

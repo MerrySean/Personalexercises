@@ -1,26 +1,37 @@
 <html>
 <head>
+  <base href="/Personalexercises/">
     <title>Exercise | Three</title>
-    <link rel="stylesheet" href="./../../public/css/bootstrap.css">
-    <link rel="stylesheet" href="./../../public/css/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="./public/css/app.css">
+    <?php include("../../public/css/styles.php") ?>
+    <link rel="stylesheet" href="./exercises/three/public/css/app.css">
 </head>
 <body>
-    
-    <div id="app" class="container">
-        <div class="jumbotron">
-            <h1>Login page</h1>
-        </div>
-        <form action="POST" class="form-group">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
+
+    <div id="app" class="container mt-5">
+        <form action="./controller/login.php" class="card" method="POST">
+            <div class="card-header">
+              <h1>Login Here</h1>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="Uname">Username</label>
+                <input name="username" id="Uname" type="text" class="form-control" placeholder="Enter username here">
+              </div>
+              <div class="form-group">
+                <label for="PWord">Password</label>
+                <input name="password" id="PWord" type="password" class="form-control" placeholder="Enter Password here">
+              </div>
+              <div class="d-flex justify-content-around">
+                <button name="btnLogin" class="btn btn-success">Login</button>
+                <button class="btn btn-danger">Register</button>
+              </div>
+            </div>
         </form>
     </div>
-    
+
 
     <!--Scripts-->
-    <script src="./../../public/js/jquery.js" ></script>
-    <script src="./../../public/js/bootstrap.bundle.js" ></script>
-    <script src="./public/js/app.js" ></script>
+    <?php include("../../public/js/scripts.php") ?>
+    <script src="./exercises/three/public/js/app.js"></script>
 </body>
 </html>

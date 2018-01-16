@@ -1,9 +1,8 @@
-<htm>
+<html>
     <head>
         <title>Exercise | one</title>
-        <link rel="stylesheet" href="./../../public/css/bootstrap.css">
-        <link rel="stylesheet" href="./../../public/css/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" href="./public/css/app.css">
+        <?php include('./public/css/styles.php') ?>
+        <link rel="stylesheet" href="./exercises/one/public/css/app.css">
     </head>
     <body>
         <div class="d-flex justify-content-center">
@@ -58,7 +57,7 @@
         </div>
 
         <!--Scripts-->
-        
+
         <script src="./public/js/app.js" ></script>
     </body>
 </html>

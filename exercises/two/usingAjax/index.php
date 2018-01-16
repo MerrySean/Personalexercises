@@ -1,15 +1,15 @@
 <html>
 <head>
     <title>Exercise | Two</title>
-    <link rel="stylesheet" href="./../../../public/css/bootstrap.css">
-    <link rel="stylesheet" href="./../../../public/css/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="./../public/css/app.css">
+    <link rel="stylesheet" href="./public/css/bootstrap.css">
+    <link rel="stylesheet" href="./public/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./exercises/two/public/css/app.css">
 </head>
 <body>
     <button type="button" class="btn btn-primary m-4" data-toggle="modal" data-target="#Thoughts">
-        Thoughts 
+        Thoughts
     </button>
-    <a type="button" class="btn btn-primary m-4 text-white" href="../">Using Regular Request</a>
+    <a type="button" class="btn btn-primary m-4 text-white" href="./Register">Using Regular Request</a>
     <div class="d-flex justify-content-around">
         <div class="card mt-4" style="width: 30rem; ">
             <div class="card-body">
@@ -73,10 +73,6 @@
         </div>
     </div>
 
-    <div id="output">
-    
-    </div>
-
     <!-- Modal -->
     <div class="modal fade" id="Thoughts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
@@ -88,7 +84,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                        This is one of my most treasured projects, 
+                        This is one of my most treasured projects,
                         it's because I have learned so much from it.
                         it really pushes me to create my own Dynamic Form Validation
                         and now I could re-use this Form Validation code for all of my project
@@ -103,13 +99,13 @@
     </div>
     <!-- End of Modal -->
 
-    
+
 
     <!--Scripts-->
     <script src="./../../../public/js/jquery.js" ></script>
     <script src="./../../../public/js/bootstrap.bundle.js" ></script>
     <script src="./../public/js/app2.js" ></script>
 
-    
+
 </body>
 </html>
