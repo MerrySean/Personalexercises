@@ -173,7 +173,7 @@
                     if ($value === $value2) {
                         return 'Passed';
                     }else {
-                        return $Value2.' Mismatch';
+                        return 'Password Mismatch';
                     }
                 }
                 else{

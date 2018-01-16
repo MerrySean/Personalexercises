@@ -89,9 +89,9 @@
 					{
 						/*
 							extract the validation from what and how much
-							example validation +max-20
+							example-1 validation +max-20
 							returns ['max' => 20]
-							example validation +samewith-pass
+							example-2 validation +samewith-pass
 						 	returns ['samewith' => pass]
 						*/
 						$output = $this->validation->dynamic_extract($value2);
@@ -108,7 +108,9 @@
 								// 	$Result = true;
 								// }
 
-							}else if($this->is_field($value4)){
+							}
+							// if value4 is not numeric just like 'pass'
+							else if($this->is_field($value4)){
 								$payload[$key][$key2] = $this->validation->psuedoSwitch($key3, [$this->fields[$key],$this->fields[$value4]]);
 							}
 						}
@@ -116,14 +118,10 @@
 					else {
 						$payload[$key][$key2] = $this->validation->psuedoSwitch($value2, $this->fields[$key]);
 					}
-					if($payload[$key][$key2] !== "Passed"){
-						$Result = false;
-					}
 				}
 			}
 
 			$this->after_validate($payload);
-			return $Result;
 		}
 		// end of validation
 
