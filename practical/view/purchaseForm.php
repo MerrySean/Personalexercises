@@ -4,12 +4,12 @@
 	<title>Purchase Form</title>
 </head>
 <body>
-<h2>&lt;YOUR LASTNAME&gt;Apparel</h2>
+<h2>Reyes Apparel</h2>
 <form method="GET" action="../controller/purchase.php">
 <table border="5">
 <tr>
 	<td>Item name:</td>
-	<?php 
+	<?php
 		if(isset($_GET['item'])){
 			$item = $_GET['item'];
 			echo "<td> <input type='text' name='item' value=$item /></td>";
@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>Price:</td>
-	<?php 
+	<?php
 		if(isset($_GET['price'])){
 			$price = $_GET['price'];
 			echo "<td> <input type='text' name='price' value=$price /></td>";
@@ -31,7 +31,7 @@
 </tr>
 <tr>
 	<td>
-		Discount: 
+		Discount:
 	</td>
 	<td>
 		<select name="discount" style="width:100%;">
@@ -42,7 +42,7 @@
 		</select>
 	</td>
 </tr>
-<?php 
+<?php
 	if(isset($_GET['Total'])){
 		$Total = $_GET['Total'];
 		echo "<tr>
@@ -55,8 +55,8 @@
 	<td></td>
 
 	<td colspan="2" align="right"><button type="submit">Compute</button></td>
-</tr>	
-	
+</tr>
+
 </table>
 </form>
 </body>
