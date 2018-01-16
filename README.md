@@ -20,23 +20,18 @@ Project Three
 TO create database
 
  `Create table Registration (
-
   id int unsigned not null auto_increment,
-  
   Firstname varchar(20) not null,
-  
   Lastname varchar(20) not null,
-  
   Address varchar(50),
-  
   email varchar(20) not null,
-  
   gender varchar(20) not null,
-  
   Username varchar(20) not null,
-  
   Password varchar(255) not null,
-  
   constraint pk_Registration primary key (id)
-  
   );`
+
+TODO's :
+
++ Encrypt Password before inserting into database
++ Work on Login
