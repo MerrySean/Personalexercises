@@ -1,6 +1,8 @@
 PERSONAL EXERCISES
+==================
 
 this project was made by simply following simple tutorials on the web.
+----------------------------------------------------------------------
 
 Project one
 - If you complete the form it will give an alert that shows the information you've entered, it may tell you to check your email but its not true (Planning to configure)
@@ -17,7 +19,7 @@ Project Three
 
 TO create database
 
-Create table Registration (
+`Create table Registration (
   id int unsigned not null auto_increment,
   Firstname varchar(20) not null,
   Lastname varchar(20) not null,
@@ -27,4 +29,4 @@ Create table Registration (
   Username varchar(20) not null,
   Password varchar(255) not null,
   constraint pk_Registration primary key (id)
-  );
+  );`
