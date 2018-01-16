@@ -18,11 +18,13 @@
         }
 
         function Insert($table, $payload){
-            $query = "";
-            foreach ($payload as $key => $value) {
-                
-            }
+            $query = "INSERT INTO %s (%s) VALUES(%s) ";
+            $columns = implode(',',array_keys($payload));
+            $semiValue = ':'.implode(',:',array_keys($payload));
+            $query = sprintf($query, $table, $columns, $semiValue);
 
-            return $payload;
+            $db = $this->connection;
+            $statement = $db->prepare($query);
+            return $statement->execute($payload);
         }
     }

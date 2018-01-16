@@ -134,14 +134,7 @@
 				'user' => 'root',
 				'pass' => 'merrysean',
 			]);
-			array_pop($this->fields);
-			$result = $db->Insert($table,$this->fields);
-			if($result){
-				print json_encode($result);
-				echo "<br><br><br>";
-			}else{
-				return "Submition Failed";
-			}
+			return $result = $db->Insert($table,$this->fields);
 		}
 	}
 

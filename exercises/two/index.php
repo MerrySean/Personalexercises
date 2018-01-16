@@ -42,8 +42,8 @@
             // +sameWith-Password = Field must be the same with "Password" Field
             //                      - Password can be change but to anything you like
             //                      - Password is one of the key's in fields
-        $form->submit("registration");
-        echo json_encode($form);
+        array_pop($form->fields);
+        $IsSubmitted = $form->submit("Registration");
     }
 
 
@@ -67,6 +67,13 @@
         </button>
         <a type="button" class="btn btn-primary m-4 text-white" href="./usingAjax">Using Ajax</a>
 
+        <?php if($IsSubmitted){ ?>
+          <div class="container">
+            <div class="alert alert-primary" role="alert">
+              User successfully registered!
+            </div>
+          </div>
+        <?php } ?>
 
         <div class="d-flex justify-content-around">
             <div class="card mt-4" style="width: 30rem; ">
