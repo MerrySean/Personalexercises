@@ -1,8 +1,7 @@
 <html>
 <head>
-  <base href="/Personalexercises/">
     <title>Exercise | Three</title>
-    <?php include("../../public/css/styles.php") ?>
+    <?php include("./public/css/styles.php") ?>
     <link rel="stylesheet" href="./exercises/three/public/css/app.css">
 </head>
 <body>
@@ -31,7 +30,7 @@
 
 
     <!--Scripts-->
-    <?php include("../../public/js/scripts.php") ?>
+    <?php include("./public/js/scripts.php") ?>
     <script src="./exercises/three/public/js/app.js"></script>
 </body>
 </html>

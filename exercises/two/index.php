@@ -67,16 +67,18 @@
         </button>
         <a type="button" class="btn btn-primary m-4 text-white" href="./usingAjax">Using Ajax</a>
 
-        <?php if($IsSubmitted){ ?>
-          <div class="container">
-            <div class="alert alert-primary" role="alert">
-              User successfully registered!
-            </div>
-          </div>
-        <?php } ?>
+        <?php if (isset($IsSubmitted)) {
+                  if ($IsSubmitted){ ?>
+                  <div class="container">
+                    <div class="alert alert-primary" role="alert">
+                      User successfully registered!
+                    </div>
+                  </div>
+            <?php }
+          } ?>
 
         <div class="d-flex justify-content-around">
-            <div class="card mt-4" style="width: 30rem; ">
+            <div class="card mt-4" style="width: 20rem; ">
                 <div class="card-body">
                     <h4 class="card-title text-center">Registration Form</h4>
                 </div>
@@ -305,6 +307,10 @@
                     <div class="d-flex justify-content-around">
                         <button type="submit" name="btnSubmit"class="btn btn-primary">Submit</button>
                         <button type="button" onclick="clearForm()"name="btnSubmit"class="btn btn-primary">Clear</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+                        <a href="./Login">Already have an account? Login Here.</a>
                     </div>
                 </form>
             </div>
