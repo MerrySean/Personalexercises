@@ -81,7 +81,7 @@
         ?>
 
         <div class="d-flex justify-content-around">
-            <div class="card mt-4" style="width: 30rem; ">
+            <div class="card mt-4" style="width: 20rem; ">
                 <div class="card-body">
                     <h4 class="card-title text-center">Registration Form</h4>
                 </div>
@@ -310,6 +310,10 @@
                     <div class="d-flex justify-content-around">
                         <button type="submit" name="btnSubmit"class="btn btn-primary">Submit</button>
                         <button type="button" onclick="clearForm()"name="btnSubmit"class="btn btn-primary">Clear</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+                        <a href="./Login">Already have an account? Login Here.</a>
                     </div>
                 </form>
             </div>
