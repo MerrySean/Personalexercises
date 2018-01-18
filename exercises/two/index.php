@@ -81,7 +81,7 @@
         ?>
 
         <div class="d-flex justify-content-around">
-            <div class="card mt-4" style="width: 20rem; ">
+            <div class="card mt-4" style="width: 25rem; ">
                 <div class="card-body">
                     <h4 class="card-title text-center">Registration Form</h4>
                 </div>

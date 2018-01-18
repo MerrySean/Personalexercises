@@ -15,12 +15,12 @@ $(document).ready(function(){
     btnSubmit = $("#btnSubmit");
 
     spans = {
-        fname   : [$('#fnameIcon'), false],
-        lname   : [$('#lnameIcon'), false],
+        Firstname   : [$('#fnameIcon'), false],
+        Lastname   : [$('#lnameIcon'), false],
         Address : [$('#addressIcon'), false],
         email   : [$('#emailIcon'), false],
-        uname   : [$('#unameIcon'), false],
-        pass    : [$('#passIcon'), false],
+        Username   : [$('#unameIcon'), false],
+        Password    : [$('#passIcon'), false],
         cpass   : [$('#cpassIcon'), false]
     };
 
@@ -59,7 +59,7 @@ function Submitform(){
         'lname'    : lname.val(),
         'Address'  : Address.val(),
         'email'    : email.val(),
-        'gender'   : gender.filter(":checked").val(),
+        'gender'   : $("input[name='gender']:checked").val(),
         'uname'    : uname.val(),
         'pass'     : pass.val(),
         'cpass'    : cpass.val(),
@@ -73,15 +73,16 @@ function Submitform(){
                 'gender': ['required'],
                 'uname': ['required','+max-15','+min-6','noSpcChr','noSpace'],
                 'pass': ['required','+max-20','+min-6','strength'],
-                'cpass': ['required','+max-20','+min-6','+sameWith-pass']
+                'cpass': ['required','+max-20','+min-6','+sameWith-Password']
             }
     };
 
     $.ajax({
-        url:"../controller/ajaxRequest.php",
+        url:"./exercises/two/controller/ajaxRequest.php",
         type:"POST",
         data: Data,
         success:function(payload){
+            console.log(payload);
             ajaxRequestOutput = JSON.parse(payload);
             displayResult(ajaxRequestOutput);
         },
@@ -136,7 +137,7 @@ function displayResult(payload){
         }
     }
 
-    if(!haserror){
+    if(payload.wasSubmitted === true){
         alert("Successfully Registered");
     }
 }

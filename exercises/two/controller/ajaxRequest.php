@@ -1,4 +1,4 @@
-<?php include('./controller/form.php');?>
+<?php include('../../../controller/form.php');?>
 <?php
 
     if(isset($_POST['btnSubmit']) && isset($_POST['gender']))
@@ -6,26 +6,26 @@
 
         $form = new form(
                 [
-                    'fname'     => $_POST['fname'],
-                    'lname'     => $_POST['lname'],
+                    'Firstname'     => $_POST['fname'],
+                    'Lastname'     => $_POST['lname'],
                     'Address'   => $_POST['Address'],
                     'email'     => $_POST['email'],
                     'gender'    => $_POST['gender'],
-                    'uname'     => $_POST['uname'],
-                    'pass'      => $_POST['pass'],
+                    'Username'     => $_POST['uname'],
+                    'Password'      => $_POST['pass'],
                     'cpass'     => $_POST['cpass']
                 ]
             );
 
         $form->validate(
                 [
-                    'fname'   => $_POST['validation']['fname'],
-                    'lname'   => $_POST['validation']['lname'],
+                    'Firstname'   => $_POST['validation']['fname'],
+                    'Lastname'   => $_POST['validation']['lname'],
                     'Address' => $_POST['validation']['Address'],
                     'email'   => $_POST['validation']['email'],
                     'gender'  => $_POST['validation']['gender'],
-                    'uname'   => $_POST['validation']['uname'],
-                    'pass'    => $_POST['validation']['pass'],
+                    'Username'   => $_POST['validation']['uname'],
+                    'Password'    => $_POST['validation']['pass'],
                     'cpass'   => $_POST['validation']['cpass']
                 ]
             );
@@ -42,7 +42,9 @@
             //                      - Password can be change but to anything you like
             //                      - Password is one of the key's in fields
         array_pop($form->fields);
+        //before running submit all form validation must have no errors
         $IsSubmitted = $form->submit("Registration");
+        $form->set_submitted($IsSubmitted);
         echo json_encode($form);
     }
 

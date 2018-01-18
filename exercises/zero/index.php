@@ -5,10 +5,10 @@
     </head>
     <body class="container">
         <ul>
-            <li><a href="./FakeRegistration">Exercise 1</a></li>
-            <li><a href="./Register">Exercise 2</a></li>
-            <li><a href="./Login">Exercise 3</a></li>
-            <li><a href="./Home">Exercise 4</a></li>
+            <li><a href="./FakeRegistration">Fake Registration</a></li>
+            <li><a href="./Register">Real Registration</a></li>
+            <li><a href="./Login">Login</a></li>
+            <li><a href="./Home">Home</a></li>
             <li><a href="">Exercise 5</a></li>
             <li><a href="./practical/view/purchaseForm.php">Practical 1</a></li>
         </ul>

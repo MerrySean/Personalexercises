@@ -21,13 +21,16 @@
 			// this is important to create the Main Cases for validation without this validation won't work
 			$this->validation->createMainCases();
 		}
+		public function set_submitted($Submitted){
+			$this->wasSubmitted = $Submitted;
+		}
 
 		// returns the fields of the form with the value
 		function get_fields() {
 			return $this->fields;
 		}
 		// check if the name of the field exist in the JSON
-		function is_field($name) {
+		private function is_field($name) {
 			$exist = false;
 			foreach ($this->fields as $key => $value) {
 				if ($name === $key) {
@@ -40,7 +43,7 @@
 			}
 		}
 
-		function after_validate($payload){
+		private function after_validate($payload){
 			foreach ($payload as $key => $value) {
 				foreach ($value as $key2 => $value2) {
 					if($value2 == "Passed"){
@@ -67,7 +70,7 @@
 				" - " --> don't forget this, this is a way to tell the program that the next strings are the dynamic
 				          value that you passed in the validation
 		*/
-		function validate($payload) {
+		public function validate($payload) {
 			// push an array to $Result if there are errors
 			# true = No error;
 			# false = Has error;
@@ -126,15 +129,28 @@
 		// end of validation
 
 		// Submit Form to database
-		function submit($table){
-			include('Database.php');
+		public function submit($table){
+			if ($this->has_no_errors()) {
+				include('Database.php');
+				$db = new Database([
+					'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
+					'user' => 'root',
+					'pass' => 'merrysean',
+				]);
+				return $result = $db->Insert($table,$this->fields);
+			}else{
+				return false;
+			}
 
-			$db = new Database([
-				'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
-				'user' => 'root',
-				'pass' => 'merrysean',
-			]);
-			return $result = $db->Insert($table,$this->fields);
+		}
+
+		private function has_no_errors(){
+			foreach ($this->validation_errors as $key => $value) {
+				if(!empty($value)){
+					return false;
+				}
+			}
+			return true;
 		}
 	}
 
