@@ -102,9 +102,9 @@
 
 
     <!--Scripts-->
-    <script src="./../../../public/js/jquery.js" ></script>
-    <script src="./../../../public/js/bootstrap.bundle.js" ></script>
-    <script src="./../public/js/app2.js" ></script>
+    <script src="./public/js/jquery.js" ></script>
+    <script src="./public/js/bootstrap.bundle.js" ></script>
+    <script src="./exercises/two/public/js/app2.js" ></script>
 
 
 </body>

@@ -67,13 +67,18 @@
         </button>
         <a type="button" class="btn btn-primary m-4 text-white" href="./usingAjax">Using Ajax</a>
 
-        <?php if($IsSubmitted){ ?>
+        <?php
+        if(isset($IsSubmitted)){
+            if($IsSubmitted){ ?>
           <div class="container">
             <div class="alert alert-primary" role="alert">
               User successfully registered!
             </div>
           </div>
-        <?php } ?>
+        <?php
+            }
+        }
+        ?>
 
         <div class="d-flex justify-content-around">
             <div class="card mt-4" style="width: 30rem; ">
