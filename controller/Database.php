@@ -27,4 +27,22 @@
             $statement = $db->prepare($query);
             return $statement->execute($payload);
         }
+
+        function Exist($table,$col,$data){
+            $query = "SELECT * FROM %s WHERE %s=%s";
+            $query = sprintf($query, $table,$col,':value');
+
+            $db = $this->connection;
+            $statement = $db->prepare($query);
+
+            $result = $statement->execute(['value'=>$data]);
+            if($statement->fetch()){
+              return true;
+            }else{
+              return false;
+            }
+
+        }
+
+
     }

@@ -1,6 +1,7 @@
 
 <?php
 	include('validator.php');
+	include('Database.php');
 
 	class form {
 
@@ -23,6 +24,21 @@
 		}
 		public function set_submitted($Submitted){
 			$this->wasSubmitted = $Submitted;
+		}
+
+		public function get_field($field){
+			if(array_key_exists($field,$this->fields)){
+				return $this->fields[$field];
+			}else{
+				return false;
+			}
+		}
+		public function set_a_field($field, $newValue){
+			if(array_key_exists($field,$this->fields)){
+				$this->fields[$field] = $newValue;
+			}else{
+				return false;
+			}
 		}
 
 		// returns the fields of the form with the value
@@ -116,6 +132,10 @@
 							else if($this->is_field($value4)){
 								$payload[$key][$key2] = $this->validation->psuedoSwitch($key3, [$this->fields[$key],$this->fields[$value4]]);
 							}
+							// if value4 is has 2 values
+							else if(strpos($value4,'>')){
+								$payload[$key][$key2] = $this->validation->psuedoSwitch($key3, [$this->fields[$key],$value4]);
+							}
 						}
 					}
 					else {
@@ -131,7 +151,6 @@
 		// Submit Form to database
 		public function submit($table){
 			if ($this->has_no_errors()) {
-				include('Database.php');
 				$db = new Database([
 					'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
 					'user' => 'root',
@@ -151,6 +170,18 @@
 				}
 			}
 			return true;
+		}
+
+		public function encrypt($p,$key){
+			// create cipher key by what everything is inside the form
+			$first  = hash('sha256',implode('',$key));
+			// Hash the first Hashed (maybe this would increase security, But i do not know, just doing this for what I think is good)
+			$key 		= hash('ripemd320',$first);
+				$ivlen 	= openssl_cipher_iv_length($cipher="AES-128-CBC");
+				$iv 		= openssl_random_pseudo_bytes($ivlen);
+				$cipher_text = openssl_encrypt($p,$cipher,$key,$options=OPENSSL_RAW_DATA, $iv);
+			$last   = substr($cipher_text,6);
+			return $last;
 		}
 	}
 

@@ -13,6 +13,12 @@
 
             return [$part1 => $part2];
         }
+        private function dynamic_extract_pointer($value){
+            $part1 = substr(strstr($value, '>', true),0);
+            $part2 = substr(strstr($value, '>'), 1);
+
+            return [$part1,$part2];
+        }
 
         // this adds a function in the array of cases
         function addCase($casename,$fn){
@@ -191,6 +197,25 @@
                 }else{
                     return 'No value';
                 }
+
+            });
+            // check if Value has space
+            $this->addCase('Unique',function($value,$payload){
+              if(!empty($value)){
+                $db = new Database([
+        					'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
+        					'user' => 'root',
+        					'pass' => 'merrysean',
+        				]);
+                $in = $this->dynamic_extract_pointer($payload);
+                if($db->Exist($in[0],$in[1],$value)){
+                  return $in[1].' already Exist';
+                }else{
+                  return 'Passed';
+                }
+              }else{
+                  return 'No value';
+              }
 
             });
         }

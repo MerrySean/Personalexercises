@@ -1,4 +1,4 @@
-<?php include('../../../controller/form.php');?>
+<?php include('../form.php');?>
 <?php
 
     if(isset($_POST['btnSubmit']) && isset($_POST['gender']))
@@ -6,27 +6,27 @@
 
         $form = new form(
                 [
-                    'Firstname'     => $_POST['fname'],
-                    'Lastname'     => $_POST['lname'],
+                    'Firstname' => $_POST['fname'],
+                    'Lastname'  => $_POST['lname'],
                     'Address'   => $_POST['Address'],
                     'email'     => $_POST['email'],
                     'gender'    => $_POST['gender'],
-                    'Username'     => $_POST['uname'],
-                    'Password'      => $_POST['pass'],
+                    'Username'  => $_POST['uname'],
+                    'Password'  => $_POST['pass'],
                     'cpass'     => $_POST['cpass']
                 ]
             );
 
         $form->validate(
                 [
-                    'Firstname'   => $_POST['validation']['fname'],
-                    'Lastname'   => $_POST['validation']['lname'],
-                    'Address' => $_POST['validation']['Address'],
-                    'email'   => $_POST['validation']['email'],
-                    'gender'  => $_POST['validation']['gender'],
-                    'Username'   => $_POST['validation']['uname'],
-                    'Password'    => $_POST['validation']['pass'],
-                    'cpass'   => $_POST['validation']['cpass']
+                    'Firstname' => ['required','+max-20','+min-3','noSpcChr'],
+                    'Lastname'  => ['required','+max-20','+min-2','noSpcChr'],
+                    'Address'   => ['required','+min-10'],
+                    'email'     => ['required','email','+Unique-Registration>Email'],
+                    'gender'    => ['required'],
+                    'Username'  => ['required','+max-15','+min-6','noSpcChr','noSpace','+Unique-Registration>Username'],
+                    'Password'  => ['required','+max-20','+min-6','strength'],
+                    'cpass'     => ['required','+max-20','+min-6','+sameWith-Password']
                 ]
             );
             // required           = Field must not be empty
@@ -44,7 +44,9 @@
         array_pop($form->fields);
         //before running submit all form validation must have no errors
         $IsSubmitted = $form->submit("Registration");
+        //set Submitted to to what is the result of the submittion
         $form->set_submitted($IsSubmitted);
+        //echo out a json encoded of a form
         echo json_encode($form);
     }
 

@@ -3,6 +3,7 @@
   // if user has clicked the loginbutton
   if(isset($_POST['btnLogin'])){
     include('form.php');
+    include('authenticate.php');
 
     $form = new form(
             [
@@ -13,12 +14,17 @@
 
     $form->validate(
             [
-                'Username'   => ['required','+max-20','+min-3','noSpcChr'],
-                'Password'   => ['required','+max-20','+min-3','noSpcChr'],
+                'Username'   => ['required'],
+                'Password'   => ['required'],
             ]
         );
-    
-    echo json_encode($form);
+
+
+    $form->set_a_field('Password',$form->encrypt($form->get_field('Password')));
+    $auth = new Auth($form->get_fields());
+
+
+    //echo json_encode($form);
   }
 
 ?>

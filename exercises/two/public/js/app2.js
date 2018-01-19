@@ -4,24 +4,25 @@ var spans;
 $(document).ready(function(){
 
     // initialize variables
-    fname   = $("#fname");
-    lname   = $("#lname");
-    Address = $("#Address");
-    email   = $("#email");
-    gender  = $("[name='gender']");
-    uname   = $("#uname");
-    pass    = $("#pass");
-    cpass   = $("#cpass");
+    fname     = $("#fname");
+    lname     = $("#lname");
+    Address   = $("#Address");
+    email     = $("#email");
+    gender    = $("[name='gender']");
+    uname     = $("#uname");
+    pass      = $("#pass");
+    cpass     = $("#cpass");
     btnSubmit = $("#btnSubmit");
+
 
     spans = {
         Firstname   : [$('#fnameIcon'), false],
-        Lastname   : [$('#lnameIcon'), false],
-        Address : [$('#addressIcon'), false],
-        email   : [$('#emailIcon'), false],
-        Username   : [$('#unameIcon'), false],
+        Lastname    : [$('#lnameIcon'), false],
+        Address     : [$('#addressIcon'), false],
+        email       : [$('#emailIcon'), false],
+        Username    : [$('#unameIcon'), false],
         Password    : [$('#passIcon'), false],
-        cpass   : [$('#cpassIcon'), false]
+        cpass       : [$('#cpassIcon'), false]
     };
 
     // Popover Error Messages
@@ -64,21 +65,10 @@ function Submitform(){
         'pass'     : pass.val(),
         'cpass'    : cpass.val(),
         'btnSubmit': "FormSubmit",
-        'validation' :
-            {
-                'fname': ['required','+max-20','+min-3','noSpcChr'],
-                'lname': ['required','+max-20','+min-2','noSpcChr'],
-                'Address': ['required','+min-10'],
-                'email': ['required','email'],
-                'gender': ['required'],
-                'uname': ['required','+max-15','+min-6','noSpcChr','noSpace'],
-                'pass': ['required','+max-20','+min-6','strength'],
-                'cpass': ['required','+max-20','+min-6','+sameWith-Password']
-            }
     };
 
     $.ajax({
-        url:"./exercises/two/controller/ajaxRequest.php",
+        url:"./controller/api/ajaxRequest.php",
         type:"POST",
         data: Data,
         success:function(payload){
@@ -152,7 +142,5 @@ function createContent(payload){
         li.appendChild(textnode);
         ul.append(li);
     }
-
-
     return ul;
 }
