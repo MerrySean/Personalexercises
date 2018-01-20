@@ -12,8 +12,6 @@
             <?php } else { ?>
               <li><a href="./Home">Home</a></li>
             <?php } ?>
-            <li><a href="">Exercise 5</a></li>
-            <li><a href="./practical/one">Practical 1</a></li>
         </ul>
     </body>
 </html>

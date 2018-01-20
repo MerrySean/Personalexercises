@@ -1,0 +1,16 @@
+- Integrate GOOGLE ADDRESS API to Registration page so users will need to pick their address using Google API
+this will make the address be much more TRUE.
+
+- Make a Navigation bar for all pages
+
+- Make users have the ability to update their profile
+
+- Users have the ability to upload their own Projects
+
+- Users have the ability to see a list of their own projects
+
+- Users have the ability to view their own projects (LIVE)
+
+- Before users could view their projects live it must still be validated by Admins
+
+- Routes can have dynamic values such as './list/{Projects}'
