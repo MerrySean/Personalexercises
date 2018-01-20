@@ -7,8 +7,8 @@
 
     $form = new form(
             [
-                'Username'     => $_POST['username'],
-                'Password'     => $_POST['password'],
+                'Username'    => $_POST['username'],
+                'Password'    => $_POST['password'],
             ]
         );
 
@@ -19,12 +19,20 @@
             ]
         );
 
+    // Encrypt password field
+    $form->set_a_field('Password',$form->encrypt($form->get_field('Password'),$form->get_field('Username')));
+    echo $form->get_field('Password');
+    // Start Session
+    $auth = new Auth();
+    // Authenticate user
+    $authentication = $auth->authenticate($form->get_fields());
+    // check if user was successfully authenticated
+    if($auth->is_Authenticated()){
+      header("Location: ../Home");
+    }else {
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 
-    $form->set_a_field('Password',$form->encrypt($form->get_field('Password')));
-    $auth = new Auth($form->get_fields());
-
-
-    //echo json_encode($form);
   }
 
 ?>

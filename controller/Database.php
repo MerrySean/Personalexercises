@@ -10,10 +10,10 @@
         public $connection;
 
         // Construct Database
-        function __construct($payload){
-            $this->host = $payload['host'];
-            $this->Username = $payload['user'];
-            $this->Password = $payload['pass'];
+        function __construct(){
+            $this->host = 'mysql:host=127.0.0.1;port=3306;dbname=Personal;';
+            $this->Username = 'root';
+            $this->Password = 'merrysean';
             $this->connection = new PDO($this->host, $this->Username, $this->Password);
         }
 
@@ -28,6 +28,7 @@
             return $statement->execute($payload);
         }
 
+        // ONLY ABLE TO CHECK FOR 1 DATA
         function Exist($table,$col,$data){
             $query = "SELECT * FROM %s WHERE %s=%s";
             $query = sprintf($query, $table,$col,':value');
@@ -41,6 +42,23 @@
             }else{
               return false;
             }
+        }
+
+        function selectAll($table,$col,$data){
+          $query = "SELECT * FROM %s WHERE %s=%s";
+          $query = sprintf($query, $table,$col,':value');
+
+          $db = $this->connection;
+          $statement = $db->prepare($query);
+
+          $execute = $statement->execute(['value'=>$data]);
+          
+          if($execute){
+            return $statement->fetch();
+          }else{
+            return $execute;
+          }
+
 
         }
 

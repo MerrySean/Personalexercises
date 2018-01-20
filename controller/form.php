@@ -151,11 +151,7 @@
 		// Submit Form to database
 		public function submit($table){
 			if ($this->has_no_errors()) {
-				$db = new Database([
-					'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
-					'user' => 'root',
-					'pass' => 'merrysean',
-				]);
+				$db = new Database();
 				return $result = $db->Insert($table,$this->fields);
 			}else{
 				return false;
@@ -174,13 +170,10 @@
 
 		public function encrypt($p,$key){
 			// create cipher key by what everything is inside the form
-			$first  = hash('sha256',implode('',$key));
+			$first  = hash('sha256',$key);
 			// Hash the first Hashed (maybe this would increase security, But i do not know, just doing this for what I think is good)
 			$key 		= hash('ripemd320',$first);
-				$ivlen 	= openssl_cipher_iv_length($cipher="AES-128-CBC");
-				$iv 		= openssl_random_pseudo_bytes($ivlen);
-				$cipher_text = openssl_encrypt($p,$cipher,$key,$options=OPENSSL_RAW_DATA, $iv);
-			$last   = substr($cipher_text,6);
+			$last   = substr($key,6);
 			return $last;
 		}
 	}

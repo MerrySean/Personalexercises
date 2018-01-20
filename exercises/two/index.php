@@ -42,7 +42,7 @@
             //                      - Password can be change but to anything you like
             //                      - Password is one of the key's in fields
         array_pop($form->fields);
-        $form->set_a_field('Password',$form->encrypt($form->get_field('Password'),$this->get_field('Username')));
+        $form->set_a_field('Password',$form->encrypt($form->get_field('Password'),$form->get_field('Username')));
         $IsSubmitted = $form->submit("Registration");
     }
 

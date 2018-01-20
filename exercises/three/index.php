@@ -22,7 +22,7 @@
               </div>
               <div class="d-flex justify-content-around">
                 <button name="btnLogin" class="btn btn-success">Login</button>
-                <button class="btn btn-danger">Register</button>
+                <a class="btn btn-danger" href="./Register" >Register</a>
               </div>
             </div>
         </form>

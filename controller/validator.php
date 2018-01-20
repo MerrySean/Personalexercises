@@ -202,11 +202,7 @@
             // check if Value has space
             $this->addCase('Unique',function($value,$payload){
               if(!empty($value)){
-                $db = new Database([
-        					'host' => 'mysql:host=127.0.0.1;port=3306;dbname=Personal;',
-        					'user' => 'root',
-        					'pass' => 'merrysean',
-        				]);
+                $db = new Database();
                 $in = $this->dynamic_extract_pointer($payload);
                 if($db->Exist($in[0],$in[1],$value)){
                   return $in[1].' already Exist';
