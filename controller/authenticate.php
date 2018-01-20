@@ -30,4 +30,17 @@ class Auth{
   }
 
 
+  public function name(){
+    return $_SESSION['user']['Firstname']." ".$_SESSION['user']['Lastname'];
+  }
+
+  public function gender(){
+    return $_SESSION['user']['gender'];
+  }
+
+  public function Logout(){
+    session_destroy();
+  }
+
+
 }

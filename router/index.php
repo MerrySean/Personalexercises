@@ -19,9 +19,9 @@
   public function route($PATH){
     foreach ($this->uri as $key => $value) {
       if ($PATH === $key) {
+        include_once('./controller/authenticate.php');
+        $auth = new Auth();
         if(!empty($value[1])){
-          include('./controller/authenticate.php');
-          $auth = new Auth();
           if($value[1] === 'guest'){
             if ($auth->is_Authenticated()) {
               header("Location: ./Home");

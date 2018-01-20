@@ -3,10 +3,13 @@
         <title>Login Page</title>
     </head>
     <body>
-        <form action="">
-            username: <input type="text" name="Uname"><br>
-            password: <input type="password" name="Pass"><br>
-            <button type="submit">Login</button>
-        </form>
+      <h1>Welcome <?php if($auth->gender() === 'Male'){ echo 'Mr.';}else{echo 'Ms.';}?> <?php echo $auth->name(); ?></h1>
+        <ul>
+          <li><a href="./Logout">Logout</a></li>
+          <li><a href="./List/Users">List of All users</a></li>
+          <li><a href="./List/Projects">List of All Projects</a></li>
+          <li><a href="./List/Practical">List of All Small-Usefull-Projects (Practical)</a></li>
+          <li><a href="./Add/Projects">Add Projects</a></li>
+        </ul>
     </body>
 </html>
