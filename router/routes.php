@@ -12,4 +12,6 @@ $router->GET("/Logout","./exercises/four/user/logout.php")->auth('user'); // For
 
 // TODO make a table that list all Projects of users
 $router->GET('/List/Practical', "./Projects/practical/view/purchaseForm.php")->auth('user');
+
+
 ?>

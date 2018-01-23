@@ -14,3 +14,7 @@ this will make the address be much more TRUE.
 - Before users could view their projects live it must still be validated by Admins
 
 - Routes can have dynamic values such as './list/{Projects}'
+
+- Timestamp of user registration
+
+- If user updated Must have Audit of all DATA
