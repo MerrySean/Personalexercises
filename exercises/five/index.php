@@ -11,17 +11,10 @@
   <div class="container">
     <form class="card">
       <div class="card-header">
-        <h1>Updating the profile of <?php if($auth->gender() === 'male'){ echo 'Mr.';}else{echo 'Ms.';}?> <?php echo $auth->name(); ?></h1>
+        <h1>profile of <?php if($auth->gender() === 'male'){ echo 'Mr.';}else{echo 'Ms.';}?> <?php echo $auth->name(); ?></h1>
       </div>
       <div class="card-body">
-        <div class="form-group">
-          <label for="Firstname">Firstname</label>
-          <input type="text" class="form-control" id="Firstname" placeholder="Firstname">
-        </div>
-      </div>
-      <hr class="m-0">
-      <div class="card-body p-2">
-        <button class="btn btn-success" type="submit">Update Profile</button>
+          Firstname: <?php echo $auth->user('Firstname'); ?>
       </div>
     </form>
   </div>

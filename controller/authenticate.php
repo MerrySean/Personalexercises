@@ -38,6 +38,12 @@ class Auth{
     return $_SESSION['user']['gender'];
   }
 
+  public function user($credentials){
+    if(!$credentials === 'Password'){
+      return $_SESSION['user'][$credentials];  
+    }
+  }
+
   public function Logout(){
     session_destroy();
   }
