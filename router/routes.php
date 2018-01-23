@@ -1,7 +1,7 @@
 <?php
 
 $router->GET("/","./exercises/zero/index.php"); // For anyone
-$router->GET("/FakeRegistration","./exercises/one/index.php"); // For anyone
+$router->GET("/FakeRegistration","./exercises/one/index.php")->auth('user'); // For anyone
 
 $router->GET("/Register","./exercises/two/index.php")->auth('guest'); // For guest only
 $router->GET("/usingAjax","./exercises/two/usingAjax/index.php")->auth('guest'); // For Guest only
@@ -13,5 +13,5 @@ $router->GET("/Logout","./exercises/four/user/logout.php")->auth('user'); // For
 // TODO make a table that list all Projects of users
 $router->GET('/List/Practical', "./Projects/practical/view/purchaseForm.php")->auth('user');
 
-
+$router->GET('/User/Update',"./exercises/five/index.php")->auth('user');
 ?>

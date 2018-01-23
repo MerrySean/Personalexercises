@@ -1,11 +1,10 @@
 <html>
     <head>
-        <title>Exercises</title>
-        <link rel="stylesheet" href="./public/css/bootstrap.css">
+        <title>Personal Exercises</title>
+        <?php include('./public/css/styles.php') ?>
     </head>
     <body class="container">
         <ul>
-            <li><a href="./FakeRegistration">Fake Registration</a></li>
             <?php if(!$auth->is_Authenticated()){ ?>
               <li><a href="./Register">Real Registration</a></li>
               <li><a href="./Login">Login</a></li>
