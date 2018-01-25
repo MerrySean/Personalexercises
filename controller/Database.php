@@ -52,14 +52,24 @@
           $statement = $db->prepare($query);
 
           $execute = $statement->execute(['value'=>$data]);
-          
+
           if($execute){
-            return $statement->fetch();
+            return $statement->fetch(PDO::FETCH_ASSOC);
           }else{
             return $execute;
           }
+        }
 
+        function UpdateOne($table,$col,$newValue,$oldValue){
+          $query = "UPDATE %s SET %s=%s WHERE %s=%s ;";
+          $query = sprintf($query, $table, $col, ':value', $col, ':oldValue');
 
+          $db = $this->connection;
+          $statement = $db->prepare($query);
+
+          $execute = $statement->execute(['value' => $newValue, 'oldValue' => $oldValue]);
+
+          return $execute;
         }
 
 

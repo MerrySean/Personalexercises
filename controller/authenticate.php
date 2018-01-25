@@ -5,7 +5,9 @@ class Auth{
   protected $user;
 
   public function __construct(){
-    session_start();
+    if(session_status() == PHP_SESSION_NONE){
+      session_start();
+    }
   }
 
   public function authenticate($credentials){
@@ -38,9 +40,14 @@ class Auth{
     return $_SESSION['user']['gender'];
   }
 
-  public function user($credentials){
-    if(!$credentials === 'Password'){
-      return $_SESSION['user'][$credentials];  
+  public function user($credentials = ''){
+    if(!empty($credentials) && !($credentials === 'Password')){
+      return $_SESSION['user'][$credentials];
+    }else if(empty($credentials)){
+      $temporary = $_SESSION['user'];
+      unset($temporary['id']);
+      unset($temporary['Password']);
+      return $temporary;
     }
   }
 

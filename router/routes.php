@@ -13,5 +13,8 @@ $router->GET("/Logout","./exercises/four/user/logout.php")->auth('user'); // For
 // TODO make a table that list all Projects of users
 $router->GET('/List/Practical', "./Projects/practical/view/purchaseForm.php")->auth('user');
 
+// Show Update view
 $router->GET('/User/Update',"./exercises/five/index.php")->auth('user');
+// Does the real Update
+$router->GET('/api/User/Update',"./exercises/five/updateUser.php")->auth('user');
 ?>

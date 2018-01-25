@@ -72,7 +72,6 @@ function Submitform(){
         type:"POST",
         data: Data,
         success:function(payload){
-            console.log(payload);
             ajaxRequestOutput = JSON.parse(payload);
             displayResult(ajaxRequestOutput);
         },

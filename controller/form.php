@@ -156,7 +156,16 @@
 			}else{
 				return false;
 			}
+		}
 
+		// Update Existing Product in Database
+		public function update($table,$col,$new,$old){
+			if ($this->has_no_errors()) {
+				$db = new Database();
+				return $result = $db->updateOne($table,$col,$new,$old);
+			}else{
+				return false;
+			}
 		}
 
 		private function has_no_errors(){
