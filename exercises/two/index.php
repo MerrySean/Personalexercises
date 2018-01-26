@@ -356,6 +356,7 @@
                 }
                 if(!$haserror){
                     echo "<script>alert('User successfully registered!');</script>";
+                    echo "<script>document.location = 'http://127.0.0.1/Personalexercises/Login'</script>";
                 }
             }
 

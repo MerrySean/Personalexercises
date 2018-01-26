@@ -179,10 +179,11 @@
 
 		public function encrypt($p,$key){
 			// create cipher key by what everything is inside the form
-			$first  = hash('sha256',$key);
+			$first  = hash('sha256',$p);
 			// Hash the first Hashed (maybe this would increase security, But i do not know, just doing this for what I think is good)
 			$key 		= hash('ripemd320',$first);
 			$last   = substr($key,6);
+			$last 	= $key.$last;
 			return $last;
 		}
 	}

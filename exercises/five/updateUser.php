@@ -46,11 +46,11 @@
         $auth = new Auth();
         $authentication = $auth->authenticate(['Username'=>$_SESSION['user']['Username'], 'Password'=>$encPass]);
         $IsSubmitted = false;
-        if($auth->is_Authenticated()){
+        if($authentication){
           $IsSubmitted = $form->update("Registration",$what,$to,$old);
           $authentication = $auth->authenticate(['Username'=>$_SESSION['user']['Username'], 'Password'=>$encPass]);
         }
-        echo json_encode(['Result'=>$IsSubmitted ]);
+        echo json_encode(['Result'=>$IsSubmitted,'auth'=>$authentication]);
     }else{
       echo json_encode(['a'=>'hello']);
     }

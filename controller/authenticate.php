@@ -23,7 +23,9 @@ class Auth{
       return true;
     }
     else{
-      return "Credentials does not match";
+      unset($_SESSION['user']);
+      session_destroy();
+      return false;
     }
   }
 
