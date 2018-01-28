@@ -33,7 +33,7 @@
             if ($auth->is_Authenticated()) {
               include($value[0]);
             }else{
-              header("Location: ./");
+              header("Location: http://127.0.0.1/Personalexercises/");
             }
           }
         }

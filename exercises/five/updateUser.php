@@ -50,7 +50,7 @@
           $IsSubmitted = $form->update("Registration",$what,$to,$old);
           $authentication = $auth->authenticate(['Username'=>$_SESSION['user']['Username'], 'Password'=>$encPass]);
         }
-        echo json_encode(['Result'=>$IsSubmitted,'auth'=>$authentication]);
+        echo json_encode(['Result'=>$IsSubmitted]);
     }else{
       echo json_encode(['a'=>'hello']);
     }

@@ -55,6 +55,8 @@ $(document).ready(function(){
             $('.alert').on('closed.bs.alert', function () {
               location.reload();
             })
+          }else{
+            location.reload();
           }
         },
         error : function(request, error){
